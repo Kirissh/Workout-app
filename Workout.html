@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Tracker ++</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #bb86fc;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #1e1e1e;
+        }
+        .tabs {
+            display: flex;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .tab {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            background-color: #333;
+            margin-right: 5px;
+            border-radius: 5px;
+        }
+        .tab:hover {
+            background-color: #444;
+        }
+        .active {
+            background-color: #bb86fc;
+        }
+        .workout {
+            display: none;
+        }
+        .active-workout {
+            display: block;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Workout Tracker ++</h1>
+        <div class="tabs">
+            <div class="tab active" onclick="showWorkout('day1')">Day 1: Push</div>
+            <div class="tab" onclick="showWorkout('day2')">Day 2: Pull</div>
+            <div class="tab" onclick="showWorkout('day3')">Day 3: Legs</div>
+            <div class="tab" onclick="showWorkout('day4')">Day 4: Core</div>
+            <div class="tab" onclick="showWorkout('day5')">Day 5: Full Body</div>
+        </div>
+
+        <div id="day1" class="workout active-workout">
+            <h2>Day 1: Push</h2>
+            <ul>
+                <li><input type="checkbox">Barbell Bench Press</li>
+                <li><input type="checkbox">Incline Dumbbell Press</li>
+                <li><input type="checkbox">Overhead Dumbbell Press</li>
+                <li><input type="checkbox">Lateral Raises</li>
+                <li><input type="checkbox">Tricep Dips</li>
+            </ul>
+        </div>
+
+        <div id="day2" class="workout">
+            <h2>Day 2: Pull</h2>
+            <ul>
+                <li><input type="checkbox">Pull-Ups</li>
+                <li><input type="checkbox">Bent Over Barbell Rows</li>
+                <li><input type="checkbox">Seated Cable Rows</li>
+                <li><input type="checkbox">Face Pulls</li>
+                <li><input type="checkbox">Barbell Bicep Curls</li>
+            </ul>
+        </div>
+
+        <div id="day3" class="workout">
+            <h2>Day 3: Legs</h2>
+            <ul>
+                <li><input type="checkbox">Squats</li>
+                <li><input type="checkbox">Deadlifts</li>
+                <li><input type="checkbox">Leg Press</li>
+                <li><input type="checkbox">Lunges</li>
+                <li><input type="checkbox">Calf Raises</li>
+            </ul>
+        </div>
+
+        <div id="day4" class="workout">
+            <h2>Day 4: Core</h2>
+            <ul>
+                <li><input type="checkbox">Plank Variations</li>
+                <li><input type="checkbox">Hanging Leg Raises</li>
+                <li><input type="checkbox">Russian Twists</li>
+                <li><input type="checkbox">Burpees or Mountain Climbers</li>
+            </ul>
+        </div>
+
+        <div id="day5" class="workout">
+            <h2>Day 5: Full Body</h2>
+            <ul>
+                <li><input type="checkbox">Light Weights or Bodyweight Exercises</li>
+                <li><input type="checkbox">Swimming or Martial Arts</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function showWorkout(day) {
+            const workouts = document.querySelectorAll('.workout');
+            const tabs = document.querySelectorAll('.tab');
+            workouts.forEach(workout => {
+                workout.classList.remove('active-workout');
+            });
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(day).classList.add('active-workout');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
